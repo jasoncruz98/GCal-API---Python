@@ -21,6 +21,6 @@ In the Python Quickstart example above, running main() allows us to build a serv
 
 **boilerplate_create_service.py**
 
--> generates authentication token for the end-user and stores it in a pickle file.
--> contains boilerplate code for initiating a service object with any Google API.
+-> generates authentication token for the end-user and stores it in a pickle file.  
+-> contains boilerplate code for initiating a service object with any Google API.  
 -> contains a method to convert dates to RFC3339 standard, specifically the UTC+0 timezone.
