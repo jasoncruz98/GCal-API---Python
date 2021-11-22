@@ -10,6 +10,7 @@ client_secret_file = 'client_secret_file.json'
 
 
 class GCal:
+
     creds = None
     API_NAME = 'calendar'
     API_VERSION = 'v3'
@@ -38,11 +39,12 @@ class GCal:
         self.service = build(self.API_NAME, self.API_VERSION,
                              credentials=self.creds)
 
-    def getEventsList(self):
+    def getEventsList(self, maxResults):
+        self.maxResults = maxResults
         now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-        print('Getting the upcoming 10 events')
+        print('Getting the upcoming {} events'.format(self.maxResults))
         events_result = self.service.events().list(calendarId='primary', timeMin=now,
-                                                   maxResults=10, singleEvents=True,
+                                                   maxResults=self.maxResults, singleEvents=True,
                                                    orderBy='startTime').execute()
         events = events_result.get('items', [])
 
@@ -54,4 +56,4 @@ class GCal:
 
 
 g = GCal("client_secret_file.json")
-g.getEventsList()
+g.getEventsList(20)
