@@ -37,7 +37,7 @@ event = {
     "summary": "sample event with Meet link",
     "description": "sample description"
 }
-res = service.events().insert(calendarId="primary", sendNotifications=True,
+res = service.events().insert(calendarId="primary", sendUpdates="none",
                               body=event, conferenceDataVersion=1).execute()
 print(res)
 
